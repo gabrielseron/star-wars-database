@@ -1,0 +1,7 @@
+{
+  "name": "Star Wars Database",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
