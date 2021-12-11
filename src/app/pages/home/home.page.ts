@@ -43,7 +43,7 @@ export class HomePage implements OnInit {
   {
     this.swapi.getCharacter(url).then(async(data: Characters) =>
     {
-      console.log(data);
+      console.log(JSON.stringify(data));
       if (this.platform.is("desktop"))
       {
         if (!localStorage.getItem(data.name))

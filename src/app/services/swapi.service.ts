@@ -48,6 +48,18 @@ export class SwapiService
     {
       this.http.get(url).subscribe((data: any) => 
       {
+        let starshipList = []
+        if (data.starships.length != 0)
+        {
+          for (let i = 0; i < data.starships.length; i++)
+          {
+            this.http.get(data.starships[i]).subscribe((data: any) => 
+            {
+              starshipList.push(data.name)
+            })
+          }
+        }
+        console.log(starshipList);
         const selectedCharacter : Characters =
         {
           name: data.name,
@@ -62,10 +74,10 @@ export class SwapiService
           created: data.created,
           edited: data.edited,
           url: data.url,
-          starships: data.starships
+          starships: JSON.stringify(starshipList)
         }
 
-        console.log(data.created); // 2014-01-01T23:28:56.782Z
+        console.log(selectedCharacter); // 2014-01-01T23:28:56.782Z
         resolve(selectedCharacter)
       })
     })

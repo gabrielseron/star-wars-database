@@ -7,8 +7,21 @@
 </ion-header>
 
 <ion-content>
-  <div class="div">
+  <div class="img">
     <img src="{{characterImage}}" alt="">
+  </div>
+  <div class="">
+    <h3>Name : {{character.name}}</h3>
+    <h3>Gender : {{character.gender}}</h3>
+    <h3>Hair Color : {{character.hair_color}}</h3>
+    <h3>Eyes Color : {{character.eye_color}}</h3>
+    <h3>Skin Color : {{character.skin_color}}</h3>
+    <h3>Height : {{character.height}}</h3>
+    <h3>Mass : {{character.mass}}</h3>
+    <h3>Birth Year : {{character.birth_year}}</h3>
+    <h3 *ngFor="let starship of character.starships">{{starship}}</h3>
+    <h3>Article Created : {{character.created}}</h3>
+    <h3>Article Updated : {{character.edited}}</h3>
   </div>
   
 </ion-content>

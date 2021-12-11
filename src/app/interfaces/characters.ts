@@ -12,7 +12,7 @@ export interface Characters
     created: string,
     edited: string,
     url: string,
-    starships?: string[],
+    starships?: any,
     image?: string
 }
 
