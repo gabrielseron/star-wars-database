@@ -71,10 +71,10 @@ export class SwapiService
           birth_year: data.birth_year,
           gender: data.gender,
           homeworld: data.homeworld,
-          created: data.created,
-          edited: data.edited,
+          created: Date.parse(data.created),
+          edited: Date.parse(data.edited),
           url: data.url,
-          starships: JSON.stringify(starshipList)
+          starships: starshipList
         }
 
         console.log(selectedCharacter); // 2014-01-01T23:28:56.782Z

@@ -9,8 +9,8 @@ export interface Characters
     birth_year: string,
     gender: string,
     homeworld: string,
-    created: string,
-    edited: string,
+    created: number | Date | string,
+    edited: number | Date | string,
     url: string,
     starships?: any,
     image?: string

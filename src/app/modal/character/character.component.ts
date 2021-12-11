@@ -29,6 +29,9 @@ export class CharacterComponent implements OnInit {
 
     if (this.character.image)
       this.characterImage = this.character.image
+
+    this.character.created = new Date(this.character.created).toLocaleDateString([], {day: '2-digit', month: '2-digit', year: '2-digit'}) + " : " + new Date(this.character.created).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+    this.character.edited = new Date(this.character.edited).toLocaleDateString([], {day: '2-digit', month: '2-digit', year: '2-digit'}) + " : " + new Date(this.character.edited).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
   }
 
   close()
