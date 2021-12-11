@@ -12,7 +12,8 @@ export interface Characters
     created: string,
     edited: string,
     url: string,
-    starships?: string[]
+    starships?: string[],
+    image?: string
 }
 
 // DECODE DATE
