@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
+import { ModalController, Platform } from '@ionic/angular';
+import { Characters } from '../../interfaces/characters';
 
 @Component({
   selector: 'app-character',
@@ -7,8 +10,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CharacterComponent implements OnInit {
 
-  constructor() { }
+  @Input() characterName: string;
+  character: Characters
+  characterImage: string = "assets/img/icon.png"
+  constructor
+  (
+    private modal: ModalController,
+    private storage: NativeStorage,
+    private platform: Platform
+  ) { }
 
-  ngOnInit() {}
+  async ngOnInit()
+  {
+    if (this.platform.is("desktop"))
+      this.character = JSON.parse(localStorage.getItem(this.characterName))
+    else
+      this.character = JSON.parse(await this.storage.getItem(this.characterName))
+
+    if (this.character.image)
+      this.characterImage = this.character.image
+  }
+
+  close()
+  {
+    this.modal.dismiss(
+    {
+      'dismissed': true
+    })
+  }
+
+  log()
+  {
+    console.log("Hi-oh");
+  }
 
 }

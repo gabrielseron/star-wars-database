@@ -1,3 +1,14 @@
-<p>
-  character works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-icon slot="start" size="large" name="chevron-back-outline" (click)="close()"></ion-icon>
+    <ion-title>{{ character.name }}</ion-title>
+    <ion-icon slot="end" size="large" name="refresh-outline" (click)="log()"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="div">
+    <img src="{{characterImage}}" alt="">
+  </div>
+  
+</ion-content>
