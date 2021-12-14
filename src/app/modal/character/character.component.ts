@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { ModalController, Platform } from '@ionic/angular';
 import { Characters } from '../../interfaces/characters';
+import { EditComponent } from '../edit/edit.component';
 
 @Component({
   selector: 'app-character',
@@ -16,6 +17,7 @@ export class CharacterComponent implements OnInit {
   constructor
   (
     private modal: ModalController,
+    private editModal: ModalController,
     private storage: NativeStorage,
     private platform: Platform
   ) { }
@@ -42,8 +44,19 @@ export class CharacterComponent implements OnInit {
     })
   }
 
-  log()
+  async editCharacter(character: Characters)
   {
-    console.log("Hi-oh");
+    const modal = await this.editModal.create(
+    {
+      component: EditComponent,
+      componentProps: {
+        'character': character,
+      }
+    })
+    modal.onDidDismiss().then(async()=>
+    {
+      this.ngOnInit()
+    })
+    return await modal.present()
   }
 }
