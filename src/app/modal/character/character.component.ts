@@ -46,5 +46,4 @@ export class CharacterComponent implements OnInit {
   {
     console.log("Hi-oh");
   }
-
 }

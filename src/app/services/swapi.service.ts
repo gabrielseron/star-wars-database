@@ -14,7 +14,6 @@ export class SwapiService
   (
     private http: HttpClient,
   ) { }
-  
 
   getAllCharacters()
   {
@@ -76,8 +75,6 @@ export class SwapiService
           url: data.url,
           starships: starshipList
         }
-
-        console.log(selectedCharacter); // 2014-01-01T23:28:56.782Z
         resolve(selectedCharacter)
       })
     })
