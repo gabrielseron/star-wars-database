@@ -9,13 +9,13 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { LanguageComponent } from './modal/language/language.component';
 import { CharacterComponent } from './modal/character/character.component';
-
+import { WarningResetComponent } from './popovers/warning-reset/warning-reset.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
 @NgModule({
-  declarations: [AppComponent, LanguageComponent, CharacterComponent],
+  declarations: [AppComponent, LanguageComponent, CharacterComponent, WarningResetComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
   providers:
