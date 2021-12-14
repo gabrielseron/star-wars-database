@@ -16,6 +16,8 @@ export class HomePage implements OnInit {
 
   characters: any
   languageParam: string
+  boba: any = {name: "boba"}
+  notboba: any = {name: "notboba"}
   constructor
   (
     private swapi: SwapiService,
@@ -45,7 +47,7 @@ export class HomePage implements OnInit {
         else
           this.languageParam = "?format=wookiee"
       }
-    await this.getAllCharacters()
+    // await this.getAllCharacters()
     await SplashScreen.hide()
     // this.openLanguageModal()
   }
@@ -81,18 +83,22 @@ export class HomePage implements OnInit {
       message: 'Retrieving Data...',
     });
     await load.present();
-    if ((this.platform.is("desktop") && localStorage.getItem(character.name)) || (!this.platform.is("desktop") && await this.storage.getItem(character.name)))
+    // can't do a if else because if no created, a typeError will be created whth no possibility of handling it
+    try
     {
-      await this.loading.dismiss()
-      const modal = await this.modal.create(
+      if (JSON.parse(localStorage.getItem(character.name)).created || JSON.parse(await this.storage.getItem(character.name)).created)
       {
-        component: CharacterComponent,
-        componentProps: {
-          'characterName': character.name,
-        }
-      })
-      return await modal.present()
-    } else
+        await this.loading.dismiss()
+        const modal = await this.modal.create(
+        {
+          component: CharacterComponent,
+          componentProps: {
+            'characterName': character.name,
+          }
+        })
+        return await modal.present()
+      }
+    } catch (error)
     {
       this.swapi.getCharacter(character.url).then(async(data: Characters) =>
       {
@@ -126,7 +132,6 @@ export class HomePage implements OnInit {
         toast.present();
       })
     }
-    
   }
 
   onClick()

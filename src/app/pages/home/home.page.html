@@ -4,13 +4,15 @@
     <ion-title class="ion-text-center">Star Wars Database</ion-title>
     <ion-icon slot="end" name="search-outline" size="large" (click)="onClick()"></ion-icon>
   </ion-toolbar>
-  <ion-toolbar>
+  <ion-toolbar class="hidden">
     <ion-searchbar (ionInput)="searchOnInput()" (ionCancel)="searchOnCancel()" showCancelButton="focus" debounce="100"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list class="div" *ngFor="let character of characters">
-    <ion-item (click)="getCharacter(character)">{{ character.name }}</ion-item>
+  <ion-list class="div">
+    <ion-item *ngFor="let character of characters" (click)="getCharacter(character)">{{ character.name }}</ion-item>
+    <ion-item (click)="getCharacter(boba)">boba</ion-item>
+    <ion-item (click)="getCharacter(notboba)">notboba</ion-item>
   </ion-list>
 </ion-content>
