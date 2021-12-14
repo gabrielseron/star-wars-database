@@ -10,7 +10,7 @@ import { WarningResetComponent } from '../../popovers/warning-reset/warning-rese
 export class LanguageComponent implements OnInit {
 
   selectedLanguage: string
-
+  isDataReset: boolean = false
   constructor
   (
     private modal: ModalController,
@@ -21,6 +21,7 @@ export class LanguageComponent implements OnInit {
 
   async ngOnInit()
   {
+    this.isDataReset = false
     if (this.platform.is("desktop"))
       this.selectedLanguage = localStorage.getItem("Language")
     else
@@ -29,10 +30,7 @@ export class LanguageComponent implements OnInit {
 
   close()
   {
-    this.modal.dismiss(
-    {
-      'dismissed': true
-    })
+    this.modal.dismiss({selectedLanguage : this.selectedLanguage, isDataReset : this.isDataReset})
   } 
 
   changeLanguage(language: string)
@@ -59,18 +57,19 @@ export class LanguageComponent implements OnInit {
       }
       this.selectedLanguage = "?format=wookiee"
     }
-    console.log(this.selectedLanguage);
   }
 
   async modalClearData()
   {
-    console.log("click");
     const popover = await this.popover.create(
     {
       component: WarningResetComponent,
       translucent: true
-    }
-    )
+    })
+    popover.onDidDismiss().then(async()=>
+    {
+      this.isDataReset = true
+    })
     return await popover.present();
   }
 }
