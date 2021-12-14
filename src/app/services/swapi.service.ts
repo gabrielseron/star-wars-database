@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http'
+import { HttpClient, HttpErrorResponse} from '@angular/common/http'
 import { Characters } from '../interfaces/characters';
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class SwapiService
 
   getAllCharacters()
   {
-    return new Promise((resolve) =>
+    return new Promise((resolve, reject) =>
     {
       this.http.get(this.url + 'people/').subscribe((data: any) => 
       {
@@ -37,13 +37,13 @@ export class SwapiService
           })
         }
         resolve(this.characterList)
-      })
+      }, ((error : HttpErrorResponse) => reject(error)))
     })
   }
 
   getCharacter(url: string)
   {
-    return new Promise((resolve)=>
+    return new Promise((resolve, reject)=>
     {
       this.http.get(url).subscribe((data: any) => 
       {
@@ -76,7 +76,7 @@ export class SwapiService
           starships: starshipList
         }
         resolve(selectedCharacter)
-      })
+      }, ((error : HttpErrorResponse) => reject(error)))
     })
   }
 }
