@@ -15,9 +15,3 @@ export interface Characters
     starships?: any,
     image?: string
 }
-
-// DECODE DATE
-// var json = "\"2014-01-01T23:28:56.782Z\"";
-
-// var dateStr = JSON.parse(json);  
-// console.log(dateStr); // 2014-01-01T23:28:56.782Z
