@@ -11,6 +11,6 @@
 
 <ion-content>
   <ion-list class="div" *ngFor="let character of characters">
-    <ion-item (click)="getCharacter(character.url)">{{ character.name }}</ion-item>
+    <ion-item (click)="getCharacter(character)">{{ character.name }}</ion-item>
   </ion-list>
 </ion-content>
