@@ -15,7 +15,7 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
 export class HomePage implements OnInit {
 
   characters: any
-
+  languageParam: string
   constructor
   (
     private swapi: SwapiService,
@@ -27,8 +27,24 @@ export class HomePage implements OnInit {
 
   async ngOnInit()
   {
+    if (this.platform.is("desktop"))
+      {
+        if (!localStorage.getItem("Language"))
+          localStorage.setItem("Language", "en")
+        
+        if (localStorage.getItem("Language") != "en")
+          this.languageParam = "?format=wookiee"
+      } else
+      {
+        if (await !this.storage.getItem("Language"))
+          await this.storage.setItem("Language", "en")
+        
+        if (await this.storage.getItem("Language") != "en")
+          this.languageParam = "?format=wookiee"
+      }
     await this.getAllCharacters()
-    SplashScreen.hide()
+    await SplashScreen.hide()
+    // this.openLanguageModal()
   }
 
   getAllCharacters()
@@ -47,7 +63,7 @@ export class HomePage implements OnInit {
       if (this.platform.is("desktop"))
       {
         if (!localStorage.getItem(data.name))
-          await localStorage.setItem(data.name, JSON.stringify(data))
+          localStorage.setItem(data.name, JSON.stringify(data))
       } else
       {
         if (!this.storage.getItem(data.name))
@@ -78,5 +94,13 @@ export class HomePage implements OnInit {
     return await modal.present()
   }
 
+  searchOnInput()
+  {
+    
+  }
 
+  searchOnCancel()
+  {
+    
+  }
 }
