@@ -4,3 +4,17 @@
     <ion-title>Settings</ion-title>
   </ion-toolbar>
 </ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col size="12">
+      <ion-button (click)="changeLanguage('en')" fill="clear" shape="round">English</ion-button>
+      <ion-button (click)="changeLanguage('wookie')" fill="clear" shape="round">Wookie</ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      <ion-button size="large" (click)="modalClearData()" expand="block" fill="red" shape="round">Clear Data</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>
