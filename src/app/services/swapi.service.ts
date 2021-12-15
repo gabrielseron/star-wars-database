@@ -89,21 +89,14 @@ export class SwapiService
   {
     return new Promise((resolve, reject) =>
     {
-      this.http.get(this.url + 'people/').subscribe((data: any) => 
-      {
-        this.character_page = data.total_pages
-        for (let i = 0; i < this.character_page; i++)
-        {
-          this.http.get(this.url + 'people/?page=' + (i+1)).subscribe((data: any) => 
+          this.http.get(this.url + 'people/?page=1&limit=100').subscribe((data: any) => 
           {
             for (let i = 0; i < data.results.length; i++)
             {
               this.characterList.push({name: data.results[i].name, url: data.results[i].url})
             }
-          })
-        }
+          }, ((error : HttpErrorResponse) => reject(error)))
         resolve(this.characterList)
-      }, ((error : HttpErrorResponse) => reject(error)))
     })
   }
 
