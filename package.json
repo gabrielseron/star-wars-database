@@ -33,7 +33,7 @@
     "@ionic-native/core": "^5.32.1",
     "@ionic-native/http": "^5.32.1",
     "@ionic-native/native-storage": "^5.34.0",
-    "@ionic/angular": "^5.5.2",
+    "@ionic/angular": "^6.0.1",
     "cordova-plugin-camera": "^6.0.0",
     "cordova-plugin-nativestorage": "^2.3.2",
     "jetifier": "^2.0.0",
