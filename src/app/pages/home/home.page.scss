@@ -2,3 +2,18 @@
 {
     display : none
 }
+
+ion-header
+{
+    ion-toolbar
+    {
+        .leftIcon
+        {
+            margin-left: 2vw;
+        }
+        .rightIcon
+        {
+            margin-right: 2vw;
+        }
+    }
+}
