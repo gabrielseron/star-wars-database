@@ -161,9 +161,4 @@ export class HomePage implements OnInit {
     this.searchbarValue = ""
     return await modal.present()
   }
-
-  searchOnInput()
-  {
-    console.log(this.searchbarValue);
-  }
 }
