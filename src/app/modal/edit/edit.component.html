@@ -2,54 +2,53 @@
   <ion-toolbar>
     <ion-icon slot="start" size="large" name="chevron-back-outline" (click)="close()"></ion-icon>
     <ion-title>Edit {{ character.name }}</ion-title>
-    <ion-icon slot="end" size="large" name="save-outline"></ion-icon>
+    <ion-icon slot="end" size="large" name="save-outline" (click)="save()"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="img">
-    <img src="{{characterImage}}" alt="">
+    <img src="{{characterImage}}" alt="" (click)="changeImage()">
   </div>
 
   <ion-row class="form">
     <ion-item>
-      <ion-label position="floating">Name</ion-label>
-      <ion-input name="gender" type="text" value="{{character.name}}"></ion-input>
+      <h3>{{character.name}}</h3>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Gender</ion-label>
-      <ion-input name="gender" type="text" value="{{character.gender}}"></ion-input>
+      <ion-input name="gender" type="text" [(ngModel)]="character.gender"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Hair Color</ion-label>
-      <ion-input name="gender" type="text" value="{{character.hair_color}}"></ion-input>
+      <ion-input name="gender" type="text" [(ngModel)]="character.hair_color"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Eye Color</ion-label>
-      <ion-input name="gender" type="text" value="{{character.eye_color}}"></ion-input>
+      <ion-input name="gender" type="text" [(ngModel)]="character.eye_color"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Skin Color</ion-label>
-      <ion-input name="gender" type="text" value="{{character.skin_color}}"></ion-input>
+      <ion-input name="gender" type="text" [(ngModel)]="character.skin_color"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Height</ion-label>
-      <ion-input name="gender" type="text" value="{{character.height}}"></ion-input>
+      <ion-input name="gender" type="text" [(ngModel)]="character.height"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Mass</ion-label>
-      <ion-input name="gender" type="text" value="{{character.mass}}"></ion-input>
+      <ion-input name="gender" type="text" [(ngModel)]="character.mass"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Birth Year</ion-label>
-      <ion-input name="gender" type="text" value="{{character.birth_year}}"></ion-input>
+      <ion-input name="gender" type="text" [(ngModel)]="character.birth_year"></ion-input>
     </ion-item>
 
     <ion-item *ngFor="let starship of character.starships">
