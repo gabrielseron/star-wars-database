@@ -16,8 +16,8 @@ export class HomePage implements OnInit {
 
   characters: any
   languageParam: string
-  boba: any = {name: "boba"}
-  notboba: any = {name: "notboba"}
+  isSearchbarHidden : boolean = true
+  searchbarValue : string
   constructor
   (
     private swapi: SwapiService,
@@ -40,7 +40,7 @@ export class HomePage implements OnInit {
           this.languageParam = "?format=wookiee"
       } else
       {
-        if (await !this.storage.getItem("Language"))
+        if (!this.storage.getItem("Language"))
           await this.storage.setItem("Language", "en")
         if (await this.storage.getItem("Language") == "en")
           this.languageParam = "en"
@@ -61,8 +61,8 @@ export class HomePage implements OnInit {
     await load.present();
     this.swapi.getAllCharacters().then(async (data: any) =>
     {
-      await this.loading.dismiss()
       this.characters = data
+      await this.loading.dismiss()
     }).catch(async() =>
       {
         await this.loading.dismiss()
@@ -86,7 +86,7 @@ export class HomePage implements OnInit {
     // can't do a if else because if no created, a typeError will be created whth no possibility of handling it
     try
     {
-      if (JSON.parse(localStorage.getItem(character.name)).created || JSON.parse(await this.storage.getItem(character.name)).created)
+      if (JSON.parse(localStorage.getItem(character.name)) || JSON.parse(await this.storage.getItem(character.name)))
       {
         await this.loading.dismiss()
         const modal = await this.modal.create(
@@ -134,9 +134,10 @@ export class HomePage implements OnInit {
     }
   }
 
-  onClick()
+  showSearchbar()
   {
-    console.log(this.languageParam);
+    this.isSearchbarHidden = !this.isSearchbarHidden
+    this.searchbarValue = ""
   }
 
   async openLanguageModal()
@@ -156,11 +157,6 @@ export class HomePage implements OnInit {
 
   searchOnInput()
   {
-    
-  }
-
-  searchOnCancel()
-  {
-    
+    console.log(this.searchbarValue);
   }
 }
