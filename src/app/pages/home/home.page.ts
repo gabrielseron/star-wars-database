@@ -32,22 +32,22 @@ export class HomePage implements OnInit {
   {
     this.isSearchbarHidden = true
     if (this.platform.is("desktop"))
-      {
-        if (!localStorage.getItem("Language"))
-          localStorage.setItem("Language", "en")
-        if (localStorage.getItem("Language") == "en")
-          this.languageParam = "en"
-        else
-          this.languageParam = "?format=wookiee"
-      } else
-      {
-        if (!this.storage.getItem("Language"))
-          await this.storage.setItem("Language", "en")
-        if (await this.storage.getItem("Language") == "en")
-          this.languageParam = "en"
-        else
-          this.languageParam = "?format=wookiee"
-      }
+    {
+      if (!localStorage.getItem("Language"))
+        localStorage.setItem("Language", "en")
+      if (localStorage.getItem("Language") == "en")
+        this.languageParam = "en"
+      else
+        this.languageParam = "?format=wookiee"
+    } else
+    {
+      if (!this.storage.getItem("Language"))
+        await this.storage.setItem("Language", "en")
+      if (await this.storage.getItem("Language") == "en")
+        this.languageParam = "en"
+      else
+        this.languageParam = "?format=wookiee"
+    }
     await this.getAllCharacters()
     await SplashScreen.hide()
     // this.openLanguageModal()
