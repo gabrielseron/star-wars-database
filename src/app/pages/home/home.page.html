@@ -6,12 +6,12 @@
     <ion-icon slot="end" name="close-outline" size="large" (click)="showSearchbar()" [ngClass]="{hidden: isSearchbarHidden}"></ion-icon>
   </ion-toolbar>
   <ion-toolbar [ngClass]="{'hidden' : isSearchbarHidden}">
-    <ion-searchbar (ionChange)="searchOnInput()" (ionCancel)="showSearchbar()" showCancelButton="focus" debounce="100" [(ngModel)]="searchbarValue"></ion-searchbar>
+    <ion-searchbar (ionChange)="searchOnInput()" (ionCancel)="showSearchbar()" showCancelButton="focus" debounce="100" [(ngModel)]="searchbarValue" animated></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list class="div">
-    <ion-item *ngFor="let character of characters" (click)="getCharacter(character)">{{ character.name }}</ion-item>
+    <ion-item *ngFor="let character of characters | filter:searchbarValue" (click)="getCharacter(character)">{{ character.name }}</ion-item>
   </ion-list>
 </ion-content>

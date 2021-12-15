@@ -16,7 +16,7 @@ export class HomePage implements OnInit {
 
   characters: any
   languageParam: string
-  isSearchbarHidden : boolean = true
+  isSearchbarHidden : boolean
   searchbarValue : string
   constructor
   (
@@ -30,6 +30,7 @@ export class HomePage implements OnInit {
 
   async ngOnInit()
   {
+    this.isSearchbarHidden = true
     if (this.platform.is("desktop"))
       {
         if (!localStorage.getItem("Language"))
@@ -47,7 +48,7 @@ export class HomePage implements OnInit {
         else
           this.languageParam = "?format=wookiee"
       }
-    // await this.getAllCharacters()
+    await this.getAllCharacters()
     await SplashScreen.hide()
     // this.openLanguageModal()
   }
@@ -96,6 +97,8 @@ export class HomePage implements OnInit {
             'characterName': character.name,
           }
         })
+        this.isSearchbarHidden = true
+        this.searchbarValue = ""
         return await modal.present()
       }
     } catch (error)
@@ -119,6 +122,8 @@ export class HomePage implements OnInit {
             'characterName': data.name,
           }
         })
+        this.isSearchbarHidden = true
+        this.searchbarValue = ""
         return await modal.present()
       }).catch(async() =>
       {
@@ -152,6 +157,8 @@ export class HomePage implements OnInit {
       if (data['data'].selectedLanguage != currentLanguage || data['data'].isDataReset)
         this.ngOnInit()
     })
+    this.isSearchbarHidden = true
+    this.searchbarValue = ""
     return await modal.present()
   }
 

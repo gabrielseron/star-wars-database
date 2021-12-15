@@ -6,6 +6,8 @@ import { IonicModule } from '@ionic/angular';
 
 import { HomePageRoutingModule } from './home-routing.module';
 
+import { Ng2SearchPipeModule } from 'ng2-search-filter'
+
 import { HomePage } from './home.page';
 
 @NgModule({
@@ -13,7 +15,8 @@ import { HomePage } from './home.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    Ng2SearchPipeModule
   ],
   declarations: [HomePage]
 })
