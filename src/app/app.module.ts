@@ -14,11 +14,12 @@ import { EditComponent } from './modal/edit/edit.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, LanguageComponent, CharacterComponent, WarningResetComponent, EditComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule],
   providers:
   [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
