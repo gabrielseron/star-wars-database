@@ -1,12 +1,12 @@
 <ion-header>
   <ion-toolbar>
-    <ion-icon slot="start" name="settings-outline" size="large" (click)="openLanguageModal()"></ion-icon>
+    <ion-icon class="leftIcon" slot="start" name="settings-outline" size="large" (click)="openLanguageModal()"></ion-icon>
     <ion-title class="ion-text-center">Star Wars Database</ion-title>
-    <ion-icon slot="end" name="search-outline" size="large" (click)="showSearchbar()" [ngClass]="{hidden: !isSearchbarHidden}"></ion-icon>
-    <ion-icon slot="end" name="close-outline" size="large" (click)="showSearchbar()" [ngClass]="{hidden: isSearchbarHidden}"></ion-icon>
+    <ion-icon class="rightIcon" slot="end" name="search-outline" size="large" (click)="showSearchbar()" [ngClass]="{hidden: !isSearchbarHidden}"></ion-icon>
+    <ion-icon class="rightIcon" slot="end" name="close-outline" size="large" (click)="showSearchbar()" [ngClass]="{hidden: isSearchbarHidden}"></ion-icon>
   </ion-toolbar>
   <ion-toolbar [ngClass]="{'hidden' : isSearchbarHidden}">
-    <ion-searchbar (ionChange)="searchOnInput()" (ionCancel)="showSearchbar()" showCancelButton="focus" debounce="100" [(ngModel)]="searchbarValue" animated></ion-searchbar>
+    <ion-searchbar (ionCancel)="showSearchbar()" showCancelButton="focus" debounce="100" [(ngModel)]="searchbarValue" animated></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
