@@ -60,8 +60,9 @@ export class EditComponent implements OnInit {
       message: 'Saving Changes...',
     });
     await load.present();
-
+    this.character.edited = Date.now()
     if (this.platform.is("desktop"))
+      
       localStorage.setItem(this.character.name, JSON.stringify(this.character))
     else
       await this.storage.setItem(this.character.name, JSON.stringify(this.character))
